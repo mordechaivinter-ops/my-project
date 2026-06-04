@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>בית הכנסת בני הישיבות | זמני תפילות ועדכונים</title>
+    <meta name="description" content="האתר הרשמי של בית הכנסת בני הישיבות. זמני תפילות, עדכוני קהילה, שמחות ואפשרות לתרומה.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800&family=Frank+Ruhl+Libre:wght@700;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f5fe',
+                            100: '#e1ebfe',
+                            500: '#3b82f6',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Heebo', 'sans-serif'],
+                        serif: ['Frank Ruhl Libre', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+        
+        /* Custom pattern background */
+        .bg-pattern {
+            background-color: #1e3a8a;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 flex flex-col min-h-screen">
+
+    <!-- Header / Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="flex items-center gap-2">
+                        <svg class="h-10 w-10 text-primary-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                        <span class="font-serif font-bold text-2xl text-primary-900">בני הישיבות</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8 space-x-reverse items-center">
+                    <a href="#times" class="text-gray-700 hover:text-primary-800 font-medium transition duration-200">זמני תפילות</a>
+                    <a href="#simchas" class="text-gray-700 hover:text-primary-800 font-medium transition duration-200">עדכוני קהילה وشמחות</a>
+                    <a href="#contact" class="text-gray-700 hover:text-primary-800 font-medium transition duration-200">צור קשר</a>
+                    <a href="https://nedar.im/" target="_blank" rel="noopener noreferrer" class="bg-gold-500 hover:bg-gold-600 text-white px-6 py-2 rounded-full font-semibold shadow-md transition duration-200 flex items-center gap-2">
+                        <span>לתרומה (נדרים פלוס)</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </a>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-primary-900 focus:outline-none p-2" aria-label="פתח תפריט">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#times" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50">זמני תפילות</a>
+                <a href="#simchas" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50">עדכוני קהילה ושמחות</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50">צור קשר</a>
+                <a href="https://nedar.im/" target="_blank" rel="noopener noreferrer" class="block mt-4 text-center bg-gold-500 hover:bg-gold-600 text-white px-3 py-3 rounded-md text-base font-bold shadow-sm">
+                    לתרומה (נדרים פלוס)
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-pattern text-white relative py-20 lg:py-32">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">ברוכים הבאים לבית הכנסת<br><span class="text-gold-400">בני הישיבות</span></h1>
+            <p class="text-lg sm:text-xl lg:text-2xl text-blue-100 max-w-3xl mx-auto mb-10 font-light">מקום של תורה, תפילה וקהילה. הצטרפו אלינו לתפילות, לשיעורי תורה ולהוויי קהילתי מגבש.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#times" class="bg-white text-primary-900 px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-100 transition shadow-lg">זמני תפילות</a>
+                <a href="https://nedar.im/" target="_blank" rel="noopener noreferrer" class="bg-gold-500 text-white border border-gold-500 px-8 py-3 rounded-full font-bold text-lg hover:bg-gold-600 transition shadow-lg flex justify-center items-center gap-2">
+                    <span>תרומה לבית הכנסת</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+            </div>
+        </div>
+        <!-- Gradient overlay for smoother look -->
+        <div class="absolute inset-0 bg-gradient-to-b md:text-4xl font-bold text-primary-900 mb-4">זמני תפילות</h2>
+                    <p class="text-gray-600 text-lg">לוח הזמנים של התפילות בימי חול, שבתות ומועדים. <br>הזמנים מעודכנים לשעון הנוכחי.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Weekdays -->
+                    <div class="bg-gray-50 rounded-2xl p-6 border-t-4 border-primary-500 shadow-sm hover:shadow-md transition">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-3">
+                            <svg class="w-6 h-6 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                            ימי חול (א'-ה')
+                        </h3>
+                        <ul class="space-y-4">
+                            <li class="flex justify-between items-center border-b border-gray-200 pb-2">
+                                <span class="font-semibold text-gray-700">שחרית (מניין א')</span>
+                                <span class="text-primary-800 font-bold bg-primary-100 px-2 py-1 rounded">06:15</span>
+                            </li>
+                            <li class="flex justify-between items-center border-b border-gray-200 pb-2">
+                                <span class="font-semibold text-gray-700">שחרית (מניין ב')</span>
+                                <span class="text-primary-800 font-bold bg-primary-100 px-2 py-1 rounded">07:30</span>
+                            </li>
+                            <li class="flex justify-between items-center border-b border-gray-200 pb-2">
+                                <span class="font-semibold text-gray-700">מנחה (גדולה)</span>
+                                <span class="text-primary-800 font-bold bg-primary-100 px-2 py-1 rounded">13:30</span>
+                            </li>
+                            <li class="flex justify-between items-center border-b border-gray-200 pb-2">
+                                <span class="font-semibold text-gray-700">מנחה (קטנה)</span>
+                                <span class="text-primary-800 font-bold bg-primary-100 px-2 py-1 rounded">15 דק' לפני השקיעה</span>
+                            </li>
+                            <li class="flex justify-between items-center border-b border-gray-200 pb-2">
+                                <span class="font-semibold text-gray-700">ערבית (מניין א')</span>
+                                <span class="text-primary-800 font-bold bg-primary-100 px-2-6 border-t-4 border-gold-500 shadow-sm hover:shadow-md transition">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-3">
+                            <svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                            שבת קודש
+                        </h3>
+                        <ul class="space-y-4">
+                            <li class="flex justify-between items-center border-b border-gray-200 pb-2">
+                                <span class="font-semibold text-gray-700">מנחה וקבלת שבת</span>
+                                <span class="text-gold-600 font-bold bg-yellow-100 px-2 py-1 rounded">כניסת שבת + 10</span>
+                            </li>
+                            <li class="flex justify-between items-center border-b borderדולה</span>
+                                <span class="text-gold-600 font-bold bg-yellow-100 px-2 py-1 rounded">13:30</span>
+                            </li>
+                            <li class="flex justify-between items-center border-b border-gray-200 pb-2">
+                                <span class="font-semibold text-gray-700">מנחה סמוך לשקיעה</span>
+                                <span class="text-gold-600 font-bold bg-yellow-100 px-2 py-1 rounded">לפי הלוח</span>
+                            </li>
+                            <li class="flex justify-between items-center">
+                                <span class="font-semibold text-gray-700">ערבית מוצ"ש</span>
+                                <span class="text-gold-600 font-bold bg-yellow-100 px-2 py-1 rounded">בצאת השבת</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Friday -->
+                    <div class="bg-gray-50 rounded-2xl p-6 borderm8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            יום שישי / ערב חג
+                        </h3>
+                        <ul class="space-y-4">
+                            <li class="flex justify-between items-center border-b border-gray-200 pb-2">
+                                <span class="font-semibold text-gray-700">שחרית (מניין א')</span>
+                                <span class="text-gray-700 font-bold bg-gray-200 px-2 py-1 rounded">06:15</span>
+                            </li>
+                            <li class="flex justify-between items-center border-b border-gray-200 pb-2">
+                                <span class="font-semibold text-gray-700">שח0 px-2 py-1 rounded">13:30</span>
+                            </li>
+                            <li class="flex justify-between items-center border-b border-gray-200 pb-2">
+                                <span class="font-semibold text-gray-700">הדלקת נרות</span>
+                                <span class="text-gray-700 font-bold bg-gray-200 px-2 py-1 rounded">לפי הלוח</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Simchas / Community Updates Section -->
+        <section id="simchas" class="py-16 bg-primary-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-primary-900 mb-4">עדכוני קהילה overflow-hidden">
+                        <div class="absolute top-0 right-0 w-16 h-16 bg-gold-100 rounded-bl-full flex items-start justify-end p-3">
+                            <svg class="w-6 h-6 text-gold-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.381z" clip-rule="evenodd"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary-900 mb-2 mt-2">מזל טוב להולדת הבן!</h3>
+                        <-white p-6 rounded-2xl shadow-sm border border-gray-100 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-16 h-16 bg-gold-100 rounded-bl-full flex items-start justify-end p-3">
+                            <svg class="w-6 h-6 text-gold-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.381z" clip-rule="evenodd"></path></svg>
+                        text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded">עודכן: לפני 3 ימים</span>
+                    </article>
+
+                    <!-- Simcha Card 3 -->
+                    <article class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-16 h-16 bg-primary-100 rounded-bl-full flex items-start justify- 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary-900 mb-2 mt-2">שיעור דף יומי חדש</h3>
+                        <p class="text-gray-600 mb-4">בשורה טובה למתפללי בית הכנסת - נפתח מניין דף יומי חדש שיימסר ע"י הרב ישראלי מדי ערב בשעה 21:00 בקומה העליונה. הציבור מוזמן!</p>
+                        <span class="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded">עודכן: לפני שבוע</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donate CTA -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-primary-900 rounded-3xl p-8 md:p-16 text-center text-white shadow-2xl relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent"></div>
+                    <div class="relative z-10 max-w-3xl mx-auto">
+                        <svg class="w-16 h-16 mx-auto mb-6 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 18a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        <h2 class="font-serif text-3xl md:text-5xl font-bold mb-6">היו שותפים בהחזקת בית הכנסת</h2>
+                        <p class="text-lg md:text-xl text-blue-100 mb-10 leading-relaxed">
+                            תרומתכם מסייעת לנו להמשיך בפעילות השוטפת, באחזקת המ hover:-translate-y-1">
+                            <span>לתרומה מאובטחת דרך נדרים פלוס</span>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter / Contact Form -->
+        <section id="contact" class="py-16 bg-gray-50 border-t border-gray-200">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col md:flex-row">
+                    <!-- Sidebar info -->
+                    <div class="bg-primary-800 text-white p-8 md:w-2/5 flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold mb-4 font-serif">הישארו מעודכנים</h3>
+                        <p class="mb-6 text-primary-100">הירשמו לקבלת עדכונים על זמני תפילות, אירועים מיוחדים ושמחות בקהילה ישירות למייל או לוואטסאפ שלכם.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 5">
+                        <form id="contact-form" class="space-y-4">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">טופס רישום ויצירת קשר</h3>
+                            
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">שם מלא</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-2input type="tel" id="phone" name="phone" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition" placeholder="050-0000000">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">כתובת אימייל</label>
+                                    <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition" placeholder="example@email.com">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">הודעה / עדכון שמחה (אופציונלי)</label>
+                                <textarea id="message" name="message" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition" placeholder="רוצים לעדכן על שמחה או להשאיר פנייה לגבאי?"></textarea>
+                            </div>
+
+                            <button type="submit" id="submit-btn" class="w-full bg-">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 border-b border-gray-800 pb-8 mb-8">
+                <div class="flex items-center gap-2">
+                    <svg class="h-8 w-8 text-gold-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                    <span class="font-serif font-bold text-xl text-white">בית הכנסת בני הישיבות</span>
+                </div>
+                
+                <div class="flex space-x-6 space-x-reverse">
+                    <a href="#times" class="hover:text-gold-400 transition">זמנים</a>
+                    <a href="#simchas" class="hover:text-gold-400 transition">שמחות</a>
+                    <a href="https://nedar.im/" target="_blank" rel="noopener noreferrer" class="hover:text-gold-400 transition">תרומה</a>
+                    <a href="#contact" class="hover:text-gold-400 transition">צור קשר</a>
+                </div>
+            </div>
+            
+            <div class="text-center text-sm text-gray-500">
+                <p>&copy; <span id="year"></span> בית הכנסת בני הישיבות. כל הזכויות שמורות.</p>
+                <p class="mt-2">האתר נבנה עבור הקהילה ולמען זיכוי הרבים.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Form submission handling
+        document.getElementById('contact-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const originalText = submitBtn.innerText;
+            
+            // Show loading state
+            submitBtn.innerText = 'שולח...';
+            URIComponent(slug)}`, {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json"
+                  },
+                  body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    alert('תודה רבה! פנייתך התקבלה בהצלחה, ניצור קשר בהקדם.');
+                    e.target.reset();
+                } else {
+                    throw new Error('Network response was not ok.');
+                }
+            } catch (error) {
+                console.error('URIComponent(slug)}`, {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json"
+                  },
+                  body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    alert('תודה רבה! פנייתך התקבלה בהצלחה, ניצור קשר בהקדם.');
+                    e.target.reset();
+                } else {
+                    throw new Error('Network response was not ok.');
+                }
+            } catch (error) {
+                console.error('
+check
